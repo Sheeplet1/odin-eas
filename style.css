@@ -2,11 +2,26 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    grid-gap: 1px;
+    width: 500px;
+    height: 500px;
+}
+
+.wrapper {
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .grid-item {
-    background-color: grey;
+    background-color: white;
     text-align: center;
     border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
