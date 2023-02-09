@@ -1,22 +1,14 @@
-const gridSizeInput = document.querySelector("#grid-size");
-const createGrid = document.querySelector("#create-grid");
+
+const createGridButton = document.querySelector("#create-grid");
 const gridContainer = document.querySelector(".grid-container");
 
-// create grid button function
-createGrid.addEventListener("click", () => {
-    // reset grid
-    while (gridContainer.firstChild) {
-        gridContainer.removeChild(gridContainer.firstChild)
-    }
+function getGridSize() {
+    gridSizeInput = prompt("Please provide grid size")
+    alert(gridSizeInput);
+    return gridSizeInput;
+}
 
-    // get grid input from user input as integer
-    const gridSize = parseInt(gridSizeInput.value);
-    
-    // set grid template
-    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-
-    // create grid 
+function createGrid(gridSize) {
     for (let i = 0; i < gridSize * gridSize; i++) {
         const div = document.createElement("div");
         div.classList.add("grid-item");
@@ -26,4 +18,23 @@ createGrid.addEventListener("click", () => {
         })
         gridContainer.appendChild(div);
     }
+}
+
+function resetGrid(gridSize) {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+};
+
+// create grid button function
+createGridButton.addEventListener("click", () => {
+    const gridSize = getGridSize();
+    
+    // reset grid
+    resetGrid(gridSize);
+
+    // create grid 
+    createGrid(gridSize);
 })
